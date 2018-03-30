@@ -1,5 +1,6 @@
 class GameBoard {
   Player[] players;
+  color[] colors = {color(255,0,0), color(0,255,0), color(255,255,0), color(0,0,255)};
   
   // Game board turns after very turn, this is the rotation (0, 1, 2 or 3)
   int direction = 0;
@@ -9,7 +10,7 @@ class GameBoard {
 
   // Constructor, gets number of real players (rest = AI) 
   GameBoard(int numofPlayer) {
-    players = generateNewPlayers(numofPlayer);
+    this.players = generateNewPlayers(numofPlayer);
   }
 
   void show() { // Draw Image with correct orientation 
@@ -26,10 +27,10 @@ class GameBoard {
     
     for (int i = 0; i< 4; i++) { // Four times:
       if (num > 0) { // if there are still non-PC: make now non PC player
-        result[i] = new Player(false, i, "Spieler " + (i+1));
+        result[i] = new Player(false, i, "Spieler " + (i+1), this.colors[i]);
         num--;  // Decrease number of non-PC-players
       } else {
-        result[i] = new Player(true, i, "Computer"); // Fill up with AI
+        result[i] = new Player(true, i, "Computer", this.colors[i]); // Fill up with AI
       }
     }
 
