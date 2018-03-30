@@ -16,6 +16,8 @@ class Pawn{ //"spielfigur"
   
   void show(){
     fill(this.c);
+    strokeWeight(4);
+    stroke(0);
     ellipse(this.pos.x, this.pos.y, this.radius, this.radius);
   }
   
