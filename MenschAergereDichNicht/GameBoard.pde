@@ -8,6 +8,8 @@ class GameBoard { //<>//
   Player[] players;
   //                red                    green             yellow            blue  
   color[] colors = {color(205, 68, 1), color(110, 165, 1), color(254, 230, 0), color(0, 120, 225)};
+  String[] colorsText = {"red", "green", "yellow", "blue"};
+
 
   // Game board turns after very turn, this is the rotation (0, 1, 2 or 3)
   int direction = 0;
@@ -18,7 +20,7 @@ class GameBoard { //<>//
   // Constructor, gets number of real players (rest = AI) 
   GameBoard() {
     loadDefaults();
-    
+
     this.starts= load("start");
     this.homes = load("home");
 
@@ -56,15 +58,14 @@ class GameBoard { //<>//
     Position[][] result = new Position[4][4];
 
     for (int i = 0; i<4; i++) {
-      String[] colorsText = {"red", "green", "yellow", "blue"};
       JSONArray objA = loadJSONObject("positions.json").getJSONObject(colorsText[i]).getJSONArray(dir);
 
       for (int j = 0; j < objA.size(); j++) {
 
         JSONObject obj = objA.getJSONObject(j);
         result[i][j] = new Position(obj.getInt("x"), obj.getInt("y"));
-        
-        if(dir == "start"){
+
+        if (dir == "start") {
           result[i][j].next = this.defaults[i*10];
         }
       }
@@ -77,13 +78,9 @@ class GameBoard { //<>//
     for (int i = 0; i < defs.size(); i++) {
       this.defaults[i] = new Position(defs.getJSONObject(i).getInt("x"), defs.getJSONObject(i).getInt("y"));
     }
-    
+
     for (int i = 0; i < defaults.length; i++) {
       defaults[i].next = defaults[(i+1)%defaults.length];
-      
     }
-
-    
-    
   }
 }

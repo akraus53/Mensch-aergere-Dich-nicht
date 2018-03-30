@@ -11,6 +11,7 @@ int chosenPawn;
 
 void setup() {
   size(600, 600);
+  frameRate(20);
   // Generate new playing board with 4 players
   board = new GameBoard();
   die = new Die();
@@ -19,15 +20,18 @@ void setup() {
 
 void draw() {
   board.show();
-  //board.turn();
+
+  text("Player: " + board.colorsText[currentPlayer], 400, 150);
+
 
   for (Player p : board.players) { // For every player
     p.showPawns(); // show his pawns
   }
-  
+
   println(board.players.length);
 
   if (modus == "die") {
+    pawnChosen = false;
     println("click die");
     // Wait for dice roll 
     die.show();
@@ -43,19 +47,19 @@ void draw() {
 
     die.show();
 
-    if(pawnChosen){
-    board.players[currentPlayer].move(board.players[currentPlayer].pawns[chosenPawn], die.number);
-    pawnChosen = false;
-    currentPlayer++;
-    currentPlayer = currentPlayer % 4;
-    modus = "die";
+    if (pawnChosen) {
+      board.players[currentPlayer].move(board.players[currentPlayer].pawns[chosenPawn], die.number);
+      pawnChosen = false;
+      currentPlayer++;
+      currentPlayer = currentPlayer % 4;
+      modus = "die";
     }
   }
 }
 
 void mousePressed() { 
   if (objectAt(die.pos, new PVector(mouseX, mouseY), 100)) dieClicked = true;
-  
+
   for (int i = 0; i< board.players[currentPlayer].pawns.length; i++) {
     if (objectAt(board.players[currentPlayer].pawns[i].pos, new PVector(mouseX, mouseY), 20)) {
       chosenPawn = i;
