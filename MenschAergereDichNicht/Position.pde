@@ -1,5 +1,4 @@
-class Position extends PVector{ // "Vererbung/Heritance"
-  PVector loc;
+class Position extends PVector{ // "Vererbung/Inheritance"
   Position next;
   
   Position(int a, int b){
@@ -9,5 +8,8 @@ class Position extends PVector{ // "Vererbung/Heritance"
   // #TODO json file for all positions
   
   
+ void loadJSON(){
+  // #TODO Implement
+ }
   
 }

@@ -22,11 +22,12 @@ void draw() {
   }
   
 }
-void mousePressed() {
-  if(mouseAt(die.pos, new PVector(mouseX, mouseY), 100)) die.roll();
+
+void mousePressed() { 
+  if(objectAt(die.pos, new PVector(mouseX, mouseY), 100)) dieClicked = true;
+  //if objectAt(Figur5, new PVector(blalbala), 40) move pawn there
 }
 
-boolean mouseAt(PVector a, PVector b, int rad){
-  return PVector.dist(a,b) <= rad ? true : false;
-   
+boolean objectAt(PVector a, PVector b, int rad){
+  return (PVector.dist(a,b) <= rad ? true : false);
 }

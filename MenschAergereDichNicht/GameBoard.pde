@@ -1,6 +1,7 @@
 class GameBoard {
   Player[] players;
-  color[] colors = {color(255,0,0), color(0,255,0), color(255,255,0), color(0,0,255)};
+  //                red                    green             yellow            blue  
+  color[] colors = {color(205,68,1), color(110,165,1), color(254,230,0), color(0,120,225)};
   
   // Game board turns after very turn, this is the rotation (0, 1, 2 or 3)
   int direction = 0;
@@ -11,6 +12,7 @@ class GameBoard {
   // Constructor, gets number of real players (rest = AI) 
   GameBoard(int numofPlayer) {
     this.players = generateNewPlayers(numofPlayer);
+    // other 
   }
 
   void show() { // Draw Image with correct orientation 
@@ -33,17 +35,11 @@ class GameBoard {
         result[i] = new Player(true, i, "Computer", this.colors[i]); // Fill up with AI
       }
     }
-
     return result;
   }
 
   void turn() { // Rotate board to next Player
     this.direction++;
     this.direction = this.direction % 4;
-  }
-
-
-  int rollDie() { // returns random die value (1-6)
-    return 0;
   }
 }

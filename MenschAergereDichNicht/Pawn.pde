@@ -1,4 +1,4 @@
-class Pawn{ //"spielfigur"
+class Pawn{ //"Spielfigur"
   Position pos;
   float radius = 40;
   color c = color(100,200,0);
@@ -26,8 +26,7 @@ class Pawn{ //"spielfigur"
     this.pos = this.pos.next;
     this.show();
     advance(value -1); 
-    
-    // Else: done moving
     } 
+    // Else: done moving
   }
 }

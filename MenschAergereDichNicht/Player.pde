@@ -12,6 +12,8 @@ class Player {
     this.number = num;
     this.score = 0;
     this.c = c;
+    
+    // Just for testing
     int xoff = floor(random(width));
     int yoff = floor(random(height));
 
