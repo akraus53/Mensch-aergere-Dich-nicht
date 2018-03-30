@@ -12,7 +12,7 @@ class Player {
     this.number = num;
     this.score = 0;
     this.c = c;
-    
+
     // Just for testing
     int xoff = floor(random(width));
     int yoff = floor(random(height));
@@ -23,10 +23,9 @@ class Player {
     this.pawns[3] = new Pawn(c, new Position(xoff + 50, yoff + 50));
   }
 
-  void move() {
-    // Roll die --> value
+  void move(Pawn pawn, int value) {
     // Pick pawn
-    // pawn.move(value);
+    pawn.move(value);
     // if 6 --> repeat
   }
 
