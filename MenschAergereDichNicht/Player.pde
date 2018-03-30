@@ -12,10 +12,13 @@ class Player {
     this.number = num;
     this.score = 0;
     this.c = c;
-    this.pawns[0] = new Pawn(c, new Position(100, 100)); // #TODO Fill with values 
-    this.pawns[1] = new Pawn(c, new Position(100, 200)); 
-    this.pawns[2] = new Pawn(c, new Position(200, 100)); 
-    this.pawns[3] = new Pawn(c, new Position(200, 200));
+    int xoff = floor(random(width));
+    int yoff = floor(random(height));
+
+    this.pawns[0] = new Pawn(c, new Position(xoff + 0, yoff + 0)); // #TODO Fill with values 
+    this.pawns[1] = new Pawn(c, new Position(xoff + 0, yoff + 50)); 
+    this.pawns[2] = new Pawn(c, new Position(xoff + 50, yoff + 0)); 
+    this.pawns[3] = new Pawn(c, new Position(xoff + 50, yoff + 50));
   }
 
   void move() {
@@ -31,8 +34,8 @@ class Player {
   }
 
   void showPawns() {
-    for (Pawn pwn : this.pawns) {
-      pwn.show();
+    for (Pawn pawn : this.pawns) {
+      pawn.show();
     }
   }
 }
