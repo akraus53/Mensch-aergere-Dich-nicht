@@ -1,7 +1,7 @@
 class Position extends PVector{ // "Vererbung/Inheritance"
   Position next;
   
-  Position(int a, int b){
+  Position(float a, float b){
     super(a,b);
   }
   //TYP: home, start, default
@@ -9,7 +9,10 @@ class Position extends PVector{ // "Vererbung/Inheritance"
   
   
  void loadJSON(){
-  // #TODO Implement
+   JSONObject values = loadJSONObject("data.json");
+   
+   
+
  }
   
 }

@@ -24,6 +24,7 @@ class Pawn{ //"Spielfigur"
   void advance(int value){ // recursive function: calls itself
     if(value > 0){
     this.pos = this.pos.next;
+    
     this.show();
     advance(value -1); 
     } 

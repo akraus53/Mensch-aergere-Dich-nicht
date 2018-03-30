@@ -1,14 +1,20 @@
 GameBoard board;
 Die die;
-int modus = 0;
+
+String modus = "die";
 boolean dieClicked;
-int currentPlayer;
+int currentPlayer = 0;
+
+boolean pawnChosen;
+int chosenPawn;
+
 
 void setup() {
   size(600, 600);
   // Generate new playing board with 4 players
-  board = new GameBoard(4);
+  board = new GameBoard();
   die = new Die();
+  board.generateNewPlayers(4);
 }
 
 void draw() {
@@ -18,33 +24,42 @@ void draw() {
   for (Player p : board.players) { // For every player
     p.showPawns(); // show his pawns
   }
+  
+  println(board.players.length);
 
-  if (modus == 0) {
+  if (modus == "die") {
+    println("click die");
     // Wait for dice roll 
     die.show();
     if (dieClicked) {
       die.roll();
-      modus = 1;
+      modus = "pawn";
     }
   }
-  if (modus == 1) {
+  if (modus == "pawn") {
+    println("click pawn");
+
+    dieClicked = false;
+
     die.show();
-    // Wait for choosing pawn 
 
-    modus = 2;
-  }
-  if (modus == 2) {
-    //Pawn move
-
-    board.players[currentPlayer].move();
+    if(pawnChosen){
+    board.players[currentPlayer].move(board.players[currentPlayer].pawns[chosenPawn], die.number);
+    pawnChosen = false;
+    currentPlayer++;
+    currentPlayer = currentPlayer % 4;
+    modus = "die";
+    }
   }
 }
 
 void mousePressed() { 
   if (objectAt(die.pos, new PVector(mouseX, mouseY), 100)) dieClicked = true;
-  for (Pawn p : board.players[currentPlayer].pawns) {
-    if (objectAt(p.pos, new PVector(), 40)) {
-      chosenPawn = p;
+  
+  for (int i = 0; i< board.players[currentPlayer].pawns.length; i++) {
+    if (objectAt(board.players[currentPlayer].pawns[i].pos, new PVector(mouseX, mouseY), 20)) {
+      chosenPawn = i;
+      pawnChosen = true;
     }
   }
 }

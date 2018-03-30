@@ -4,7 +4,7 @@ class Player {
   int number;
   int score; 
   boolean computer; // true: PC/AI, false: real Player
-  Pawn[] pawns = new Pawn[4];
+  Pawn[] pawns;
 
   Player(boolean comp, int num, String name, color c) {
     this.name = name;
@@ -13,14 +13,11 @@ class Player {
     this.score = 0;
     this.c = c;
 
-    // Just for testing
-    int xoff = floor(random(width));
-    int yoff = floor(random(height));
+    this.pawns = new Pawn[4]; //<>//
 
-    this.pawns[0] = new Pawn(c, new Position(xoff + 0, yoff + 0)); // #TODO Fill with values 
-    this.pawns[1] = new Pawn(c, new Position(xoff + 0, yoff + 50)); 
-    this.pawns[2] = new Pawn(c, new Position(xoff + 50, yoff + 0)); 
-    this.pawns[3] = new Pawn(c, new Position(xoff + 50, yoff + 50));
+    for (int i = 0; i< 4; i++) {
+      this.pawns[i] = new Pawn(c, board.starts[num][i]);
+    }
   }
 
   void move(Pawn pawn, int value) {
