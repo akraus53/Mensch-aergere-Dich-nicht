@@ -3,7 +3,7 @@ class Die { // Einzahl von Dice ist Die
   PVector pos = new PVector(20, 150);
 
   void roll() {
-    this.number = floor(random(1, 6));
+    this.number = round(random(1, 6));
   }
 
   void show() {

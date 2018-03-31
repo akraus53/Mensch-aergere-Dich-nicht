@@ -21,9 +21,14 @@ class Player {
   }
 
   void move(Pawn pawn, int value) {
-    // Pick pawn
-    pawn.move(value);
-    // if 6 --> repeat
+    if(value < 6){
+     pawn.move(value); 
+    }
+    else{
+      currentPlayer--;
+      pawn.move(value-5);
+    }
+       
   }
 
   int calcScore() { // Distance moved by all pawns on field
