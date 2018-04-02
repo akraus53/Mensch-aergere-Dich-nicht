@@ -8,7 +8,6 @@ int currentPlayer = 0;
 boolean pawnChosen;
 int chosenPawn;
 
-
 void setup() {
   size(600, 600);
   frameRate(20);
@@ -20,16 +19,13 @@ void setup() {
 
 void draw() {
   board.show();
-
   text("Player: " + board.colorsText[currentPlayer], 400, 150);
-
 
   for (Player p : board.players) { // For every player
     p.showPawns(); // show his pawns
   }
 
   println(board.players.length);
-
   if (modus == "die") {
     pawnChosen = false;
     println("click die");
@@ -42,9 +38,7 @@ void draw() {
   }
   if (modus == "pawn") {
     println("click pawn");
-
     dieClicked = false;
-
     die.show();
 
     if (pawnChosen) {

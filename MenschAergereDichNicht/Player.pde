@@ -1,4 +1,4 @@
-class Player {
+class Player { //<>//
   String name;
   color c;
   int number;
@@ -12,8 +12,7 @@ class Player {
     this.number = num;
     this.score = 0;
     this.c = c;
-
-    this.pawns = new Pawn[4]; //<>//
+    this.pawns = new Pawn[4];
 
     for (int i = 0; i< 4; i++) {
       this.pawns[i] = new Pawn(c, board.starts[num][i]);
@@ -21,14 +20,12 @@ class Player {
   }
 
   void move(Pawn pawn, int value) {
-    if(value < 6){
-     pawn.move(value); 
-    }
-    else{
+    if (value < 6) {
+      pawn.move(value);
+    } else {
       currentPlayer--;
       pawn.move(value-5);
     }
-       
   }
 
   int calcScore() { // Distance moved by all pawns on field

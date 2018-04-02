@@ -38,7 +38,6 @@ class GameBoard { //<>//
 
   void generateNewPlayers(int num) { // Player Setup
 
-
     for (int i = 0; i < 4; i++) { // Four times:
       if (num > 0) { // if there are still non-PC: make now non PC player
         this.players[i] = new Player(false, i, "Player " + (i+1), this.colors[i]);
@@ -48,12 +47,10 @@ class GameBoard { //<>//
       }
     }
   }
-
   void turn() { // Rotate board to next Player
     this.direction++;
     this.direction = this.direction % 4;
   }
-
   Position[][] load(String dir) {
     Position[][] result = new Position[4][4];
 
@@ -78,7 +75,6 @@ class GameBoard { //<>//
     for (int i = 0; i < defs.size(); i++) {
       this.defaults[i] = new Position(defs.getJSONObject(i).getInt("x"), defs.getJSONObject(i).getInt("y"));
     }
-
     for (int i = 0; i < defaults.length; i++) {
       defaults[i].next = defaults[(i+1)%defaults.length];
     }

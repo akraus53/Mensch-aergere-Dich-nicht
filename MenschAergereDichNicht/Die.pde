@@ -5,7 +5,7 @@ class Die { // Einzahl von Dice ist Die
   void roll() {
     this.number = round(random(1, 6));
   }
-
+  
   void show() {
     fill(0);
     textSize(30);

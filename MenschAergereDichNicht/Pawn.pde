@@ -1,4 +1,5 @@
-class Pawn { //"Spielfigur"
+ class Pawn { //"Spielfigur"
+ 
   Position pos;
   float radius = 40;
   color c = color(100, 200, 0);
