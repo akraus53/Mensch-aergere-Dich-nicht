@@ -3,7 +3,7 @@ Die die;
 
 String modus = "die";
 boolean dieClicked;
-int currentPlayer = 0;
+int currentPlayer = 2;
 
 boolean pawnChosen;
 int chosenPawn;
@@ -13,14 +13,13 @@ void setup() {
   frameRate(20);
   // Generate new playing board with 4 players
   board = new GameBoard();
-  die = new Die();
+  die = new Die(width/2, height/2, 50);
   board.generateNewPlayers(4);
 }
 
 void draw() {
   board.show();
-  text("Player: " + board.colorsText[currentPlayer], 400, 150);
-
+  
   for (Player p : board.players) { // For every player
     p.showPawns(); // show his pawns
   }
@@ -33,9 +32,19 @@ void draw() {
     die.show();
     if (dieClicked) {
       die.roll();
-      modus = "pawn";
+      modus = "die rolling";
     }
   }
+  
+  if(modus == "die rolling"){
+    die.update();
+    die.show(); 
+    if(die.rolling == false){
+      modus = "pawn";
+      
+    }
+  }  
+  
   if (modus == "pawn") {
     println("click pawn");
     dieClicked = false;
@@ -47,6 +56,7 @@ void draw() {
       currentPlayer++;
       currentPlayer = currentPlayer % 4;
       modus = "die";
+      die.number = 0;
     }
   }
 }

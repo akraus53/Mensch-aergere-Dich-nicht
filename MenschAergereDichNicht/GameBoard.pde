@@ -1,4 +1,4 @@
-class GameBoard { //<>//
+class GameBoard { //<>// //<>//
   Position[][] starts = new Position[4][4];
   Position[][] homes = new Position[4][4];
   Position[] defaults = new Position[40];
@@ -34,6 +34,12 @@ class GameBoard { //<>//
     imageMode(CENTER);
     image(texture, 0, 0, width, height);
     popMatrix();
+    
+    fill(0);
+    textSize(30);
+    textAlign(LEFT, CENTER);
+  text("Player: " + board.colorsText[currentPlayer], 390, 150);
+
   }
 
   void generateNewPlayers(int num) { // Player Setup
