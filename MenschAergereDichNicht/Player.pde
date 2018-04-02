@@ -21,13 +21,12 @@ class Player { //<>//
 
   void move(Pawn pawn, int value) {
     if (!pawn.start) {
-      if (value != 6) {
-        pawn.move(value);
-      } else {
-        pawn.move(value);
+      pawn.move(value);
+      
+      if (value == 6) {
         currentPlayer--;
       }
-    } else if(pawn.start){
+    } else if (pawn.start) {
       if (value == 6) {
         pawn.move(1);
         pawn.start = false;

@@ -14,7 +14,7 @@ void setup() {
   // Generate new playing board with 4 players
   board = new GameBoard();
   die = new Die(width/2, height/2, 50);
-  board.generateNewPlayers(4);
+  board.generateNewPlayers(1);
 }
 
 void draw() {
@@ -24,12 +24,16 @@ void draw() {
     p.showPawns(); // show his pawns
   }
 
-  println(board.players.length);
+  
   if (modus == "die") {
     pawnChosen = false;
     println("click die");
     // Wait for dice roll 
     die.show();
+    if(board.players[currentPlayer].computer){
+      dieClicked = true;
+    }
+    
     if (dieClicked) {
       die.roll();
       modus = "die rolling";
@@ -49,8 +53,14 @@ void draw() {
     println("click pawn");
     dieClicked = false;
     die.show();
+    
+    if(board.players[currentPlayer].computer){
+      pawnChosen = true;
+      chosenPawn = int(random(0,4));
+    }
 
     if (pawnChosen) {
+      println(currentPlayer);
       board.players[currentPlayer].move(board.players[currentPlayer].pawns[chosenPawn], die.number);
       pawnChosen = false;
       currentPlayer++;
