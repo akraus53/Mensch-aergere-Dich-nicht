@@ -3,7 +3,7 @@ Die die;
 
 String modus = "die";
 boolean dieClicked;
-int currentPlayer = 2;
+int currentPlayer = 0;
 
 boolean pawnChosen;
 int chosenPawn;
