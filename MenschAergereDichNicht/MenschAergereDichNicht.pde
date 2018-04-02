@@ -62,7 +62,7 @@ void draw() {
 }
 
 void mousePressed() { 
-  if (objectAt(die.pos, new PVector(mouseX, mouseY), 100)) dieClicked = true;
+  if (objectAt(die.pos, new PVector(mouseX, mouseY), int(die.w*0.7))) dieClicked = true;
 
   for (int i = 0; i< board.players[currentPlayer].pawns.length; i++) {
     if (objectAt(board.players[currentPlayer].pawns[i].pos, new PVector(mouseX, mouseY), 20)) {
