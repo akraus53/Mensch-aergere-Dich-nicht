@@ -20,11 +20,19 @@ class Player { //<>//
   }
 
   void move(Pawn pawn, int value) {
-    if (value < 6) {
-      pawn.move(value);
-    } else {
-      currentPlayer--;
-      pawn.move(value-5);
+    if (!pawn.start) {
+      if (value != 6) {
+        pawn.move(value);
+      } else {
+        pawn.move(value);
+        currentPlayer--;
+      }
+    } else if(pawn.start){
+      if (value == 6) {
+        pawn.move(1);
+        pawn.start = false;
+        currentPlayer--;
+      }
     }
   }
 
