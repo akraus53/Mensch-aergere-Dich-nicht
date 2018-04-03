@@ -11,9 +11,8 @@ class Die {
     this.w = w;
   }
 
-
   void roll() {
-    this.number = round(random(1, 6));
+    this.number = round(random(4, 6));
     this.rolling = true;
   }
 
@@ -32,6 +31,7 @@ class Die {
   }
 
   void show() {
+   pushMatrix();
     int zahl = this.number;
     int w = this.w;
 
@@ -46,7 +46,7 @@ class Die {
     rect(0, 0, w, w);
 
     strokeWeight(w/7);
-
+ 
     switch(zahl) {
     case 1:
       point(0, 0);
@@ -66,7 +66,6 @@ class Die {
       point(+w/4, -w/4);
       point(+w/4, +w/4);
       break;
-
     case 5:
       point(0, 0);
       point(-w/4, -w/4);
@@ -88,6 +87,8 @@ class Die {
       textSize(w*0.3);
       text("click",0, -w/5);
       text("me!", 0,+w/3);
+     
     }
+     popMatrix();
   }
 }
