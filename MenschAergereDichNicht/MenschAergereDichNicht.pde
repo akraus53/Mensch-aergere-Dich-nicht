@@ -31,6 +31,7 @@ void draw() {
     // Wait for dice roll 
     die.show();
     if(board.players[currentPlayer].computer){
+      delay(1000);
       dieClicked = true;
     }
     
