@@ -12,7 +12,7 @@ class Die {
   }
 
   void roll() {
-    this.number = round(random(4, 6));
+    this.number = round(random(1, 6));
     this.rolling = true;
   }
 
