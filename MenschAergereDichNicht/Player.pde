@@ -45,4 +45,12 @@ class Player { //<>//
       pawn.show();
     }
   }
+
+  boolean allPawnsOut() {
+    for (Pawn pawn : this.pawns) {
+      if (pawn.start == true) return false;
+      if (pawn.home == true) return false;
+    }
+    return false;
+  }
 }
