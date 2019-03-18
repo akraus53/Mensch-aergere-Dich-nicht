@@ -1,5 +1,5 @@
 // Made by Jannis and Alex
-
+// This is not the latest version of the game, its a copy to save old stuff if I make a mistake...
 GameBoard board;
 Die die;
 
