@@ -1,4 +1,4 @@
-// Made by Jannis and Alex
+ // Made by Jannis and Alex
 
 GameBoard board;
 Die die;
