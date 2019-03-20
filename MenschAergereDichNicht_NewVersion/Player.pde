@@ -22,7 +22,7 @@ class Player { //<>//
   void move(Pawn pawn, int value) {
     if (!pawn.start) {
       pawn.move(value);
-      
+
       if (value == 6) {
         currentPlayer--;
       }
@@ -33,12 +33,7 @@ class Player { //<>//
         currentPlayer--;
       }
     }
-    //new! {
-      if (pawn.firstField == true){
-        print("Pawn ist auf 1. Feld");
-        
-      }
-    //new! }
+    
   }
 
   int calcScore() { // Distance moved by all pawns on field
@@ -57,14 +52,15 @@ class Player { //<>//
       if (pawn.start == true) return false;
       if (pawn.home == true) return false;
     }
-    return false;
+    return true;
   }
   //new! {
   boolean pawnOnFirstField() {
     for (Pawn pawn : this.pawns) {
       if (pawn.firstField == true) return true;
     }
-     return false;
+    return false;
   }
-      // new! }
+ 
+    // new! }
 }
