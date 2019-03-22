@@ -5,6 +5,9 @@
   color c = color(100, 200, 0);
   boolean home = false; // State of pawn
   boolean start = true;
+  //new!{
+  boolean firstField = false;
+  //new! }
 
   Pawn(color c, Position pos) {
     this.c = c;
