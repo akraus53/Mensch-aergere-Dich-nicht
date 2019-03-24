@@ -36,9 +36,9 @@ class Pawn { //"Spielfigur"
 
     //new{
     if (bewegbar == true) {
-      //missing
+      //missing the stuff with colors
     } else {
-      //missing
+      //missing the stuff with colors
     }
     //new}
   }
