@@ -28,39 +28,46 @@ class Player { //<>//
       }
     } else if (pawn.start) {
       if (value == 6) {
-        pawn.move(1);
-        pawn.start = false;
-        currentPlayer--;
+        if (pawnOnFirstField()) {
+          println("You can't move that pawn! Choose a different one!"); // Message
+          currentPlayer--; // Set the Player back
+          die.number = 1; // Roll a 6
+          modus = "pawn"; // Set the mode to "Choose Pawn"
+        } else {
+
+          pawn.move(1);
+          pawn.start = false;
+          currentPlayer--;
+        }
       }
     }
-    
-  }
-
-  int calcScore() { // Distance moved by all pawns on field
-    // # TODO implement
-    return 0;
-  }
-
-  void showPawns() {
-    for (Pawn pawn : this.pawns) {
-      pawn.show();
     }
-  }
 
-  boolean allPawnsOut() {
-    for (Pawn pawn : this.pawns) {
-      if (pawn.start == true) return false;
-      if (pawn.home == true) return false;
+    int calcScore() { // Distance moved by all pawns on field
+      // # TODO implement
+      return 0;
     }
-    return true;
-  }
-  //new! {
-  boolean pawnOnFirstField() {
-    for (Pawn pawn : this.pawns) {
-      if (pawn.firstField == true) return true;
+
+    void showPawns() {
+      for (Pawn pawn : this.pawns) {
+        pawn.show();
+      }
     }
-    return false;
-  }
- 
+
+    boolean allPawnsOut() {
+      for (Pawn pawn : this.pawns) {
+        if (pawn.start == true) return false;
+        if (pawn.home == true) return false;
+      }
+      return true;
+    }
+    //new! {
+    boolean pawnOnFirstField() {
+      for (Pawn pawn : this.pawns) {
+        if (pawn.firstField == true) return true;
+      }
+      return false;
+    }
+
     // new! }
-}
+  }

@@ -1,4 +1,4 @@
- // Made by Jannis and Alex
+// Made by Jannis and Alex
 
 GameBoard board;
 Die die;
@@ -21,45 +21,44 @@ void setup() {
 
 void draw() {
   board.show();
-  
+
   for (Player p : board.players) { // For every player
     p.showPawns(); // show his pawns
   }
 
-  
+
   if (modus == "die") {
     pawnChosen = false;
     println("click die");
     // Wait for dice roll 
     die.show();
-    if(board.players[currentPlayer].computer){
+    if (board.players[currentPlayer].computer) {
       delay(1000);
       dieClicked = true;
     }
-    
+
     if (dieClicked) {
       die.roll();
       modus = "die rolling";
     }
   }
-  
-  if(modus == "die rolling"){
+
+  if (modus == "die rolling") {
     die.update();
     die.show(); 
-    if(die.rolling == false){
+    if (die.rolling == false) {
       modus = "pawn";
-      
     }
   }  
-  
+
   if (modus == "pawn") {
     println("click pawn");
     dieClicked = false;
     die.show();
-    
-    if(board.players[currentPlayer].computer){
+
+    if (board.players[currentPlayer].computer) {
       pawnChosen = true;
-      chosenPawn = int(random(0,4));
+      chosenPawn = int(random(0, 4));
     }
 
     if (pawnChosen) {
