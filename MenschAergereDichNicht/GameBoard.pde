@@ -2,9 +2,7 @@ class GameBoard { //<>// //<>//
   Position[][] starts = new Position[4][4];
   Position[][] homes = new Position[4][4];
   Position[] defaults = new Position[40];
-  //new! {
   Position[][] firstFields = new Position[4][1];
-  //new! }
   Position[] positions;
 
   Player[] players;
@@ -25,10 +23,7 @@ class GameBoard { //<>// //<>//
 
     this.starts= load("start");
     this.homes = load("home");
-    // new! {
     this.firstFields = load("firstFields");
-
-    //new! }
     this.players = new Player[4];
   }
 

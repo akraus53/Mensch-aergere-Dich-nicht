@@ -61,7 +61,6 @@ class Player { //<>//
     }
     return true;
   }
-  //new! {
   boolean pawnOnFirstField() {
     for (Pawn pawn : this.pawns) {
       if (pawn.firstField == true) return true;
@@ -69,4 +68,3 @@ class Player { //<>//
     return false;
   }
 }
-// new! }
