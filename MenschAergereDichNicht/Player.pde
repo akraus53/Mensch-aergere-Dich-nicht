@@ -41,33 +41,32 @@ class Player { //<>//
         }
       }
     }
-    }
-
-    int calcScore() { // Distance moved by all pawns on field
-      // # TODO implement
-      return 0;
-    }
-
-    void showPawns() {
-      for (Pawn pawn : this.pawns) {
-        pawn.show();
-      }
-    }
-
-    boolean allPawnsOut() {
-      for (Pawn pawn : this.pawns) {
-        if (pawn.start == true) return false;
-        if (pawn.home == true) return false;
-      }
-      return true;
-    }
-    //new! {
-    boolean pawnOnFirstField() {
-      for (Pawn pawn : this.pawns) {
-        if (pawn.firstField == true) return true;
-      }
-      return false;
-    }
-
-    // new! }
   }
+
+  int calcScore() { // Distance moved by all pawns on field
+    // # TODO implement
+    return 0;
+  }
+
+  void showPawns() {
+    for (Pawn pawn : this.pawns) {
+      pawn.show();
+    }
+  }
+
+  boolean allPawnsOut() {
+    for (Pawn pawn : this.pawns) {
+      if (pawn.start == true) return false;
+      if (pawn.home == true) return false;
+    }
+    return true;
+  }
+  //new! {
+  boolean pawnOnFirstField() {
+    for (Pawn pawn : this.pawns) {
+      if (pawn.firstField == true) return true;
+    }
+    return false;
+  }
+}
+// new! }

@@ -29,7 +29,7 @@ void draw() {
 
   if (modus == "die") {
     pawnChosen = false;
-    println("click die");
+    //println("click die"); // disabled for testing
     // Wait for dice roll 
     die.show();
     if (board.players[currentPlayer].computer) {

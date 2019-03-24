@@ -27,6 +27,7 @@ class GameBoard { //<>// //<>//
     this.homes = load("home");
     // new! {
     this.firstFields = load("firstFields");
+
     //new! }
     this.players = new Player[4];
   }

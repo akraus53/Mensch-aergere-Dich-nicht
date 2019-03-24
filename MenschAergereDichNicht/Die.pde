@@ -4,7 +4,7 @@ class Die {
   boolean rolling;
   float dir = 0;
   int w = 50;
-  PVector offset = new PVector(0,0);
+  PVector offset = new PVector(0, 0);
 
   Die(float x, float y, int w) {
     this.pos = new PVector(x, y);
@@ -12,7 +12,7 @@ class Die {
   }
 
   void roll() {
-     this.number = round(random(1, 6));
+    this.number = round(random(1, 6));
     this.rolling = true;
   }
 
@@ -21,17 +21,18 @@ class Die {
       if (random(1) > 0.06) {
         this.roll();
         this.dir = random(0, TWO_PI);
-        this.offset = new PVector(random(-30,30), random(-30,30));;
+        this.offset = new PVector(random(-30, 30), random(-30, 30));
+        ;
       } else {
         this.rolling = false;
         this.dir = 0;
-        this.offset = new PVector(0,0);
+        this.offset = new PVector(0, 0);
       }
     }
   }
 
   void show() {
-   pushMatrix();
+    pushMatrix();
     int zahl = this.number;
     int w = this.w;
 
@@ -46,7 +47,7 @@ class Die {
     rect(0, 0, w, w);
 
     strokeWeight(w/7);
- 
+
     switch(zahl) {
     case 1:
       point(0, 0);
@@ -85,10 +86,9 @@ class Die {
       textAlign(CENTER);
       fill(0);
       textSize(w*0.3);
-      text("click",0, -w/5);
-      text("me!", 0,+w/3);
-     
+      text("click", 0, -w/5);
+      text("me!", 0, +w/3);
     }
-     popMatrix();
+    popMatrix();
   }
 }
