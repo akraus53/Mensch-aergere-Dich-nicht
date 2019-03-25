@@ -28,17 +28,9 @@ class Player { //<>//
       }
     } else if (pawn.start) {
       if (value == 6) {
-        if (this.pawnOnFirstField()) {
-          println("You can't move that pawn! Choose a different one!"); // Message
-          currentPlayer--; // Set the Player back
-          die.number = 1; // Roll a 6
-          modus = "pawn"; // Set the mode to "Choose Pawn"
-        } else {
-
-          pawn.move(1);
-          pawn.start = false;
-          currentPlayer--;
-        }
+        pawn.move(1);
+        pawn.start = false;
+        currentPlayer--;
       }
     }
   }
@@ -77,12 +69,5 @@ class Player { //<>//
       if (pawn.home == true) return false;
     }
     return true;
-  }
-
-  boolean pawnOnFirstField() {
-    for (Pawn pawn : this.pawns) {
-      if (pawn.firstField == true) return true;
-    }
-    return false;
   }
 }

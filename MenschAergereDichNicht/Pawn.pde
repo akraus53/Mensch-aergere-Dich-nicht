@@ -6,7 +6,6 @@ class Pawn { //"Spielfigur"
   boolean home = false; // State of pawn
   boolean start = true;
   boolean defaultPos = false; //default Position (for later)
-  boolean firstField = false;
   boolean movable = true; 
   int field = 0; //shows on which field the pawn is
   Pawn(color c, Position pos) {
