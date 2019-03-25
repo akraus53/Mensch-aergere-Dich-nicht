@@ -7,8 +7,8 @@ class Pawn { //"Spielfigur"
   boolean start = true;
   boolean defaultPos = false; //default Position (for later)
   boolean firstField = false;
-  boolean beweglich = true; //bewegbar (for later)
-  int feld = 0; //shows on which field the pawn is
+  boolean movable = true; 
+  int field = 0; //shows on which field the pawn is
   Pawn(color c, Position pos) {
     this.c = c;
     this.pos = pos;
@@ -16,13 +16,13 @@ class Pawn { //"Spielfigur"
 
   void move(int value) { // move pawn by x fields
     advance(value);
-    this.feld += value; // increase "feld
-    println("Player "+ currentPlayer + ".Pawn.Feld = " + feld); //prints field of pawn
+    this.field += value; // increase "field
+    println("Player "+ currentPlayer + ".Pawn.field = " + field); //prints field of pawn
   }
 
 
   void show() {
-    if (this.beweglich == true) {
+    if (this.movable == true) {
       fill(this.c);
     } else {
       float red = (red(this.c) +120)/2;
