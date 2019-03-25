@@ -25,9 +25,9 @@ class Pawn { //"Spielfigur"
     if (this.movable == true) {
       fill(this.c);
     } else {
-      float red = (red(this.c) +120)/2;
-      float green = (green(this.c) + 120)/2;
-      float blue = (blue(this.c) + 120)/2;
+      float red = (red(this.c) +240)/3;
+      float green = (green(this.c) + 240)/3;
+      float blue = (blue(this.c) + 240)/3;
       
       color grayishC = color(red,green,blue);
       fill(grayishC);

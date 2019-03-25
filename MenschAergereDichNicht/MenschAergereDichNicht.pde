@@ -52,6 +52,13 @@ void draw() {
 
   if (modus == "pawn") {
     println("click pawn");
+    
+    /* TODO: 
+     * Count the number of pawns that can be moved. 
+     * if the result is zero, skip. 
+     * if the result is one, automatically move that pawn.
+     */
+     
     dieClicked = false;
     die.show();
     board.players[currentPlayer].checkPawns();
