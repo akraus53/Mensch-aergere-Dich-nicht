@@ -19,6 +19,7 @@ class Player { //<>//
     }
   }
 
+
   void move(Pawn pawn, int value) {
     if (!pawn.start) {
       pawn.move(value);
@@ -54,6 +55,20 @@ class Player { //<>//
     }
   }
 
+  void checkPawns() {
+    for (Pawn pawn1 : this.pawns) { //for all pawns
+      int newField = pawn1.feld + die.number;
+
+      for (Pawn pawn2 : this.pawns) { // check all of the other pawns
+        if (!(pawn1 == pawn2)) { // if it's not the same pawn
+          if (pawn2.feld == newField) {
+            pawn1.beweglich = false;
+          }
+        }
+      }
+    }
+  }
+
   boolean allPawnsOut() {
     for (Pawn pawn : this.pawns) {
       if (pawn.start == true) return false;
@@ -61,6 +76,7 @@ class Player { //<>//
     }
     return true;
   }
+
   boolean pawnOnFirstField() {
     for (Pawn pawn : this.pawns) {
       if (pawn.firstField == true) return true;

@@ -7,9 +7,8 @@ class Pawn { //"Spielfigur"
   boolean start = true;
   boolean defaultPos = false; //default Position (for later)
   boolean firstField = false;
-  boolean bewegbar = true; //bewegbar (for later)
+  boolean beweglich = true; //bewegbar (for later)
   int feld = 0; //shows on which field the pawn is
-
   Pawn(color c, Position pos) {
     this.c = c;
     this.pos = pos;
@@ -17,22 +16,26 @@ class Pawn { //"Spielfigur"
 
   void move(int value) { // move pawn by x fields
     advance(value);
-    this.feld += die.number; // increase "feld
-    println("Player "+ currentPlayer + ".Pawn.Feld = " + feld +  "(Minus 5 bcs of the 6 with which you moved out" ); //prints field of pawn
+    this.feld += value; // increase "feld
+    println("Player "+ currentPlayer + ".Pawn.Feld = " + feld); //prints field of pawn
   }
 
 
   void show() {
-    fill(this.c);
+    if (this.beweglich == true) {
+      fill(this.c);
+    } else {
+      float red = (red(this.c) +120)/2;
+      float green = (green(this.c) + 120)/2;
+      float blue = (blue(this.c) + 120)/2;
+      
+      color grayishC = color(red,green,blue);
+      fill(grayishC);
+    }
+    //fill(this.c);
     strokeWeight(4);
     stroke(0);
     ellipse(this.pos.x, this.pos.y, this.radius, this.radius);
-
-    if (bewegbar == true) {
-      //the stuff with colors is missing
-    } else {
-      //the stuff with colors is missing
-    }
   }
 
   void advance(int value) { // recursive function: calls itself

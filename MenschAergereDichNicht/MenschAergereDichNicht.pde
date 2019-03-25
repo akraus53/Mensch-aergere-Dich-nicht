@@ -61,6 +61,8 @@ void draw() {
       chosenPawn = int(random(0, 4));
     }
 
+
+
     if (pawnChosen) {
       println(currentPlayer);
       board.players[currentPlayer].move(board.players[currentPlayer].pawns[chosenPawn], die.number);
