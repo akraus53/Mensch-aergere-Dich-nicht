@@ -29,7 +29,7 @@ class Player { //<>//
       }
     } else if (pawn.start) {
       if (value == 6) {
-        if (pawnOnFirstField()) {
+        if (this.pawnOnFirstField()) {
           println("You can't move that pawn! Choose a different one!"); // Message
           currentPlayer--; // Set the Player back
           die.number = 1; // Roll a 6
@@ -57,7 +57,10 @@ class Player { //<>//
 
   void checkPawns() {
     for (Pawn pawn1 : this.pawns) { //for all pawns
-      int newField = pawn1.feld + die.number;
+      int newField = 1;
+      if (!pawn1.start) {
+        newField = pawn1.feld + die.number;
+      }
 
       for (Pawn pawn2 : this.pawns) { // check all of the other pawns
         if (!(pawn1 == pawn2)) { // if it's not the same pawn
