@@ -8,7 +8,7 @@ class Pawn { //"Spielfigur"
   boolean defaultPos = false; //default Position (for later)
   boolean movable = true; 
   int field = 0; //shows on which field the pawn is
-  
+
   Pawn(color c, Position pos) {
     this.c = c;
     this.pos = pos;
@@ -20,7 +20,6 @@ class Pawn { //"Spielfigur"
     println("Player "+ currentPlayer + ".Pawn.field = " + field); //prints field of pawn
   }
 
-
   void show() {
     if (this.movable == true) {
       fill(this.c);
@@ -28,11 +27,11 @@ class Pawn { //"Spielfigur"
       float red = (red(this.c) +240)/3;
       float green = (green(this.c) + 240)/3;
       float blue = (blue(this.c) + 240)/3;
-      
-      color grayishC = color(red,green,blue);
+
+      color grayishC = color(red, green, blue);
       fill(grayishC);
     }
-    //fill(this.c);
+
     strokeWeight(4);
     stroke(0);
     ellipse(this.pos.x, this.pos.y, this.radius, this.radius);
