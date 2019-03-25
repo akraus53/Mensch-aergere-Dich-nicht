@@ -55,7 +55,7 @@ void draw() {
     println("click pawn");
     dieClicked = false;
     die.show();
-
+    board.players[currentPlayer].checkPawns();
     if (board.players[currentPlayer].computer) {
       pawnChosen = true;
       chosenPawn = int(random(0, 4));
@@ -80,8 +80,12 @@ void mousePressed() {
 
   for (int i = 0; i< board.players[currentPlayer].pawns.length; i++) {
     if (objectAt(board.players[currentPlayer].pawns[i].pos, new PVector(mouseX, mouseY), 20)) {
-      chosenPawn = i;
-      pawnChosen = true;
+      if (board.players[currentPlayer].pawns[i].beweglich) {
+        chosenPawn = i;
+        pawnChosen = true;
+      } else {
+        println("pawn not moveable, choose a different one!");
+      }
     }
   }
 }
