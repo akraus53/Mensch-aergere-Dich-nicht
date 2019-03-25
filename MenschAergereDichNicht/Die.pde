@@ -12,7 +12,7 @@ class Die {
   }
 
   void roll() {
-    this.number = round(random(5, 6));
+    this.number = round(random(1, 6));
 
     if (keyPressed && key == 'l') {
       this.number = 6;
