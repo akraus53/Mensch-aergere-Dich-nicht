@@ -6,7 +6,7 @@ Die die;
 String modus = "die";
 boolean dieClicked;
 int currentPlayer = 0;
-
+int totalMovable = 0;
 boolean pawnChosen;
 int chosenPawn;
 
@@ -52,13 +52,14 @@ void draw() {
 
   if (modus == "pawn") {
     println("click pawn");
-    
-    /* TODO: 
-     * Count the number of pawns that can be moved. 
-     * if the result is zero, skip. 
-     * if the result is one, automatically move that pawn.
-     */
-     
+
+    if (totalMovable == 0) {
+      //skip
+    }
+    if (totalMovable == 1) {
+      //automatically move the pawn
+    }
+
     dieClicked = false;
     die.show();
     board.players[currentPlayer].checkPawns();
