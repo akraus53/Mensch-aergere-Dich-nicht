@@ -80,7 +80,7 @@ void mousePressed() {
 
   for (int i = 0; i< board.players[currentPlayer].pawns.length; i++) {
     if (objectAt(board.players[currentPlayer].pawns[i].pos, new PVector(mouseX, mouseY), 20)) {
-      if (board.players[currentPlayer].pawns[i].beweglich) {
+      if (board.players[currentPlayer].pawns[i].movable) {
         chosenPawn = i;
         pawnChosen = true;
       } else {

@@ -53,15 +53,11 @@ class Player { //<>//
   void checkPawns() {
     for (Pawn pawn1 : this.pawns) { //for all pawns
       int newField = 1;
-      if (!pawn1.start) {
-        newField = pawn1.feld + die.number;
-      }
+      if (!pawn1.start) newField = pawn1.field + die.number;
 
       for (Pawn pawn2 : this.pawns) { // check all of the other pawns
-        if (!(pawn1 == pawn2)) { // if it's not the same pawn
-          if (pawn2.field == newField) {
-            pawn1.movable = false;
-          }
+        if (!(pawn1 == pawn2)&&(pawn2.field == newField) ) { // if it's not the same pawn
+          pawn1.movable = false;
         }
       }
     }

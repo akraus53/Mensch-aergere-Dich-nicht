@@ -8,6 +8,7 @@ class Pawn { //"Spielfigur"
   boolean defaultPos = false; //default Position (for later)
   boolean movable = true; 
   int field = 0; //shows on which field the pawn is
+  
   Pawn(color c, Position pos) {
     this.c = c;
     this.pos = pos;
