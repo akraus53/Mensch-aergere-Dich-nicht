@@ -52,6 +52,10 @@ class Player { //<>//
 
   void checkPawns() {
     for (Pawn pawn1 : this.pawns) { //for all pawns
+      /* TODO:
+       * If this pawn is in start and the dies number is not a 6, this pawn is not moveable
+       */
+      
       int newField = 1;
       if (!pawn1.start) newField = pawn1.field + die.number;
 
