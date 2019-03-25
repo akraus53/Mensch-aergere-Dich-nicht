@@ -36,8 +36,12 @@ class Player { //<>//
   }
 
   int calcScore() { // Distance moved by all pawns on field
-    // # TODO implement
-    return 0;
+    int score = 0;
+
+    for (Pawn p : this.pawns) {
+      score += p.field;
+    }
+    return score;
   }
 
   void showPawns() {
