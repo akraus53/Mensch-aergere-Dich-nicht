@@ -5,8 +5,6 @@ class Position extends PVector { // "Vererbung/Inheritance"
     super(a, b);
   }
   //TYP: home, start, default
-  // #TODO json file for all positions
-
 
   void loadJSON() {
     JSONObject values = loadJSONObject("data.json");

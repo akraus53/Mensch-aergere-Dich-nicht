@@ -1,4 +1,4 @@
-class GameBoard { //<>// //<>//
+class GameBoard { //<>//
   Position[][] starts = new Position[4][4];
   Position[][] homes = new Position[4][4];
   Position[] defaults = new Position[40];
@@ -9,7 +9,6 @@ class GameBoard { //<>// //<>//
   //                red                    green             yellow            blue  
   color[] colors = {color(205, 68, 1), color(110, 165, 1), color(254, 230, 0), color(0, 120, 225)};
   String[] colorsText = {"red", "green", "yellow", "blue"};
-
 
   // Game board turns after very turn, this is the rotation (0, 1, 2 or 3)
   int direction = 0;
@@ -86,5 +85,9 @@ class GameBoard { //<>// //<>//
     for (int i = 0; i < defaults.length; i++) {
       defaults[i].next = defaults[(i+1)%defaults.length];
     }
+  }
+
+  boolean objectAt(PVector a, PVector b, int rad) {
+    return (PVector.dist(a, b) <= rad ? true : false);
   }
 }
