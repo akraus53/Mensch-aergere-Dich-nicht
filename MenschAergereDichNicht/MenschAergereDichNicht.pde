@@ -21,50 +21,78 @@ void setup() {
 
 void draw() {
   board.show();
-  
+
   for (Player p : board.players) { // For every player
     p.showPawns(); // show his pawns
   }
 
-  
   if (modus == "die") {
+    die.number = 0;
     pawnChosen = false;
-    println("click die");
+
+    //println("click die"); // disabled for testing
     // Wait for dice roll 
     die.show();
-    if(board.players[currentPlayer].computer){
+    if (board.players[currentPlayer].computer) {
       delay(1000);
       dieClicked = true;
     }
-    
+
     if (dieClicked) {
       die.roll();
       modus = "die rolling";
     }
   }
-  
-  if(modus == "die rolling"){
+
+  if (modus == "die rolling") {
     die.update();
     die.show(); 
-    if(die.rolling == false){
+    if (die.rolling == false) {
       modus = "pawn";
-      
     }
   }  
-  
+
   if (modus == "pawn") {
     println("click pawn");
+
+
+    /* TODO: 
+     * Count the number of pawns that can be moved. 
+     * if the result is zero, skip. 
+     * if the result is one, automatically move that pawn.
+     */
+
     dieClicked = false;
     die.show();
-    
-    if(board.players[currentPlayer].computer){
-      pawnChosen = true;
-      chosenPawn = int(random(0,4));
+    board.players[currentPlayer].checkPawns();
+    int choices = board.players[currentPlayer].countMovable();
+
+    if (choices == 0) {
+      board.players[currentPlayer].showPawns();
+      delay(1000);
+      board.players[currentPlayer].resetPawns();
+      currentPlayer++;
+      currentPlayer = currentPlayer%4;
+      modus = "die";
+      die.number = 0;
+    }
+
+    if (board.players[currentPlayer].computer) {
+      while (!pawnChosen) {
+        int attempt = int(random(0, 4));
+        if (board.players[currentPlayer].pawns[attempt].movable) {
+          pawnChosen = true;
+          chosenPawn = attempt;
+        }
+      }
     }
 
     if (pawnChosen) {
       println(currentPlayer);
+      board.players[currentPlayer].resetPawns();
+
       board.players[currentPlayer].move(board.players[currentPlayer].pawns[chosenPawn], die.number);
+
       pawnChosen = false;
       currentPlayer++;
       currentPlayer = currentPlayer % 4;
@@ -75,16 +103,16 @@ void draw() {
 }
 
 void mousePressed() { 
-  if (objectAt(die.pos, new PVector(mouseX, mouseY), int(die.w*0.7))) dieClicked = true;
+  if (board.objectAt(die.pos, new PVector(mouseX, mouseY), int(die.w*0.7))) dieClicked = true;
 
   for (int i = 0; i< board.players[currentPlayer].pawns.length; i++) {
-    if (objectAt(board.players[currentPlayer].pawns[i].pos, new PVector(mouseX, mouseY), 20)) {
-      chosenPawn = i;
-      pawnChosen = true;
+    if (board.objectAt(board.players[currentPlayer].pawns[i].pos, new PVector(mouseX, mouseY), 20)) {
+      if (board.players[currentPlayer].pawns[i].movable) {
+        chosenPawn = i;
+        pawnChosen = true;
+      } else {
+        println("pawn not movable, choose a different one!");
+      }
     }
   }
-}
-
-boolean objectAt(PVector a, PVector b, int rad) {
-  return (PVector.dist(a, b) <= rad ? true : false);
 }

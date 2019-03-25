@@ -1,15 +1,14 @@
-class GameBoard { //<>// //<>//
+class GameBoard { //<>//
   Position[][] starts = new Position[4][4];
   Position[][] homes = new Position[4][4];
   Position[] defaults = new Position[40];
-
+  Position[][] firstFields = new Position[4][1];
   Position[] positions;
 
   Player[] players;
   //                red                    green             yellow            blue  
   color[] colors = {color(205, 68, 1), color(110, 165, 1), color(254, 230, 0), color(0, 120, 225)};
   String[] colorsText = {"red", "green", "yellow", "blue"};
-
 
   // Game board turns after very turn, this is the rotation (0, 1, 2 or 3)
   int direction = 0;
@@ -23,7 +22,7 @@ class GameBoard { //<>// //<>//
 
     this.starts= load("start");
     this.homes = load("home");
-
+    this.firstFields = load("firstFields");
     this.players = new Player[4];
   }
 
@@ -34,12 +33,11 @@ class GameBoard { //<>// //<>//
     imageMode(CENTER);
     image(texture, 0, 0, width, height);
     popMatrix();
-    
+
     fill(0);
     textSize(30);
     textAlign(LEFT, CENTER);
-  text("Player: " + board.colorsText[currentPlayer], 390, 150);
-
+    text("Player: " + board.colorsText[currentPlayer], 390, 150);
   }
 
   void generateNewPlayers(int num) { // Player Setup
@@ -61,6 +59,7 @@ class GameBoard { //<>// //<>//
     Position[][] result = new Position[4][4];
 
     for (int i = 0; i<4; i++) {
+      //This is the new version of the game with the new "positions.json" file, the old version with the old "position_old.json" file is also saved
       JSONArray objA = loadJSONObject("positions.json").getJSONObject(colorsText[i]).getJSONArray(dir);
 
       for (int j = 0; j < objA.size(); j++) {
@@ -77,12 +76,18 @@ class GameBoard { //<>// //<>//
   }
 
   void loadDefaults() {
+    //This is the new version of the game with the new "positions.json file", the old version with the old "position_old.json" file is also saved
     JSONArray defs = loadJSONObject("positions.json").getJSONArray("default");
+
     for (int i = 0; i < defs.size(); i++) {
       this.defaults[i] = new Position(defs.getJSONObject(i).getInt("x"), defs.getJSONObject(i).getInt("y"));
     }
     for (int i = 0; i < defaults.length; i++) {
       defaults[i].next = defaults[(i+1)%defaults.length];
     }
+  }
+
+  boolean objectAt(PVector a, PVector b, int rad) {
+    return (PVector.dist(a, b) <= rad ? true : false);
   }
 }

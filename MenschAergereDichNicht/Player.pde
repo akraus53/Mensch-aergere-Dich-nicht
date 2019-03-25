@@ -22,7 +22,7 @@ class Player { //<>//
   void move(Pawn pawn, int value) {
     if (!pawn.start) {
       pawn.move(value);
-      
+
       if (value == 6) {
         currentPlayer--;
       }
@@ -36,8 +36,12 @@ class Player { //<>//
   }
 
   int calcScore() { // Distance moved by all pawns on field
-    // # TODO implement
-    return 0;
+    int score = 0;
+
+    for (Pawn p : this.pawns) {
+      score += p.field;
+    }
+    return score;
   }
 
   void showPawns() {
@@ -46,11 +50,39 @@ class Player { //<>//
     }
   }
 
+  int countMovable() {
+    int count = 0;
+    for (Pawn p : this.pawns) {
+      if (p.movable) count++;
+    }
+    return count;
+  }
+
+  void checkPawns() {
+    for (Pawn pawn1 : this.pawns) { //for all pawns
+      if (pawn1.start && die.number != 6) pawn1.movable = false;
+      int newField = 1;
+      if (!pawn1.start) newField = pawn1.field + die.number;
+
+      for (Pawn pawn2 : this.pawns) { // check all of the other pawns
+        if (!(pawn1 == pawn2)&&(pawn2.field == newField) ) { // if it's not the same pawn
+          pawn1.movable = false;
+        }
+      }
+    }
+  }
+
+  void resetPawns() {
+    for (Pawn p : this.pawns) { //for all pawns
+      p.movable = true;
+    }
+  }
+  
   boolean allPawnsOut() {
     for (Pawn pawn : this.pawns) {
       if (pawn.start == true) return false;
       if (pawn.home == true) return false;
     }
-    return false;
+    return true;
   }
 }
