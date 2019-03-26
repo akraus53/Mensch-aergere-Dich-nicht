@@ -51,7 +51,7 @@ class Player { //<>//
   }
 
   void checkPawns() {
-    for(Pawn pawn : pawns){
+    for(Pawn pawn : this.pawns){
       pawn.movable = true;
     }
     for (Pawn pawn1 : this.pawns) { //for all pawns

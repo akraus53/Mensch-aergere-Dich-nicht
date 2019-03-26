@@ -54,7 +54,12 @@ void draw() {
     println("click pawn");
 
     if (totalMovable == 0) {
+      
+       this.movable = true; 
+      
       //skip
+      currentPlayer++;
+      modus = "die";
     }
     if (totalMovable == 1) {
       //automatically move the pawn
