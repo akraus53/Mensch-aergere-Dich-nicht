@@ -22,15 +22,26 @@ class Player { //<>//
   void move(Pawn pawn, int value) {
     if (!pawn.start) {
       pawn.move(value);
-      
+      die.numThrown = 3;
       if (value == 6) {
         currentPlayer--;
+        die.numThrown = 3;
+      }
+      if (value != 6 ) {
+        die.numThrown = 0;
       }
     } else if (pawn.start) {
       if (value == 6) {
         pawn.move(1);
-        pawn.start = false;
+        pawn.start = false; // Not all 4 pawns are at your start
         currentPlayer--;
+      }
+
+      if (value != 6 && die.numThrown < 3 && pawn.start == true) {
+        currentPlayer--;
+      }
+      if (die.numThrown >= 3) {
+        die.numThrown = 0;
       }
     }
   }

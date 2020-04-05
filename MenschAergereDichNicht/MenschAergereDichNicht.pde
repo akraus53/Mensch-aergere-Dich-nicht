@@ -21,15 +21,16 @@ void setup() {
 
 void draw() {
   board.show();
-  
   for (Player p : board.players) { // For every player
     p.showPawns(); // show his pawns
+    
+    
   }
 
   
   if (modus == "die") {
     pawnChosen = false;
-    println("click die");
+ //   println("click die");
     // Wait for dice roll 
     die.show();
     if(board.players[currentPlayer].computer){
@@ -53,7 +54,7 @@ void draw() {
   }  
   
   if (modus == "pawn") {
-    println("click pawn");
+   // println("click pawn");
     dieClicked = false;
     die.show();
     
@@ -63,14 +64,14 @@ void draw() {
     }
 
     if (pawnChosen) {
-      println(currentPlayer);
+    //  println(currentPlayer);
       board.players[currentPlayer].move(board.players[currentPlayer].pawns[chosenPawn], die.number);
       pawnChosen = false;
       currentPlayer++;
       currentPlayer = currentPlayer % 4;
       modus = "die";
       die.number = 0;
-    }
+         }
   }
 }
 

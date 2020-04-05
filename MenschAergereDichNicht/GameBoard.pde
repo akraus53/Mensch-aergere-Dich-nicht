@@ -34,12 +34,11 @@ class GameBoard { //<>// //<>//
     imageMode(CENTER);
     image(texture, 0, 0, width, height);
     popMatrix();
-    
+
     fill(0);
     textSize(30);
     textAlign(LEFT, CENTER);
-  text("Player: " + board.colorsText[currentPlayer], 390, 150);
-
+    text("Player: " + board.colorsText[currentPlayer], 390, 150);
   }
 
   void generateNewPlayers(int num) { // Player Setup

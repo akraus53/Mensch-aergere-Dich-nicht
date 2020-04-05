@@ -4,7 +4,7 @@
   float radius = 40;
   color c = color(100, 200, 0);
   boolean home = false; // State of pawn
-  boolean start = true;
+  boolean start = true; //Every pawn is at start
 
   Pawn(color c, Position pos) {
     this.c = c;
@@ -13,7 +13,7 @@
 
   void move(int value) { // move pawn by x fields
     advance(value);
-  }
+        }
 
   void show() {
     fill(this.c);
@@ -29,6 +29,7 @@
       this.show();
       advance(value -1);
     } 
-    // Else: done moving
+    // else: done moving
+      
   }
 }
